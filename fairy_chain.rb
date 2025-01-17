@@ -34,6 +34,18 @@ class FairyChain
       end
     end
   end
+
+  def print_fairychain
+    @blockchain.each do |block|
+      pp "Data: #{block.data}"
+      pp "Prev hash: #{block.prev_hash}"
+      pp "Nonce: #{block.nonce}"
+      pp "Difficulty: #{block.difficulty}"
+      pp "Time: #{Time.at(block.time)}"
+      pp "Hash: #{block.hash}"
+      pp "--------------------------------"
+    end
+  end
 end
 
 # mining blocks
@@ -57,4 +69,6 @@ if blockchain.validate_fairychain?
 else
   puts "Blockchain corrupted!"
 end
+
+blockchain.print_fairychain
 
