@@ -33,6 +33,16 @@ class FairyBlock
       end
     end
   end
+
+    def to_json(*args)
+    {
+      data: @data,
+      prev_hash: @prev_hash,
+      nonce: @nonce,
+      difficulty: @difficulty,
+      time: @time
+    }.to_json(*args)
+  end
 end
 
 

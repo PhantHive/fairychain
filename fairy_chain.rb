@@ -14,6 +14,14 @@ class FairyChain
     @blockchain << block
   end
 
+  def last_block
+    @blockchain.last
+  end
+
+  def empty_chain?
+    @blockchain.empty?
+  end
+
   def validate_fairychain?
     @blockchain.each_with_index do |block, index|
       if index == 0
@@ -50,25 +58,25 @@ end
 
 # mining blocks
 
-init_hash = '0000000000000000000000000000000000000000000000000000000000000000'
-b0 = FairyBlock.new('Hello, Fairies!', init_hash)
-b1 = FairyBlock.new('Hello, Fairies! I repeat HELLO FAIRIES!', b0.hash)
-b2 = FairyBlock.new('That\'s me Mario!', b1.hash)
-b3 = FairyBlock.new('TEST TEST TEST', b2.hash)
-
-
-blockchain = FairyChain.new
-blockchain.add_block(b0)
-blockchain.add_block(b1)
-blockchain.add_block(b2)
-blockchain.add_block(b3)
-
-
-if blockchain.validate_fairychain?
-  puts "Blockchain is operational"
-else
-  puts "Blockchain corrupted!"
-end
-
-blockchain.print_fairychain
+# init_hash = '0000000000000000000000000000000000000000000000000000000000000000'
+# b0 = FairyBlock.new('Hello, Fairies!', init_hash)
+# b1 = FairyBlock.new('Hello, Fairies! I repeat HELLO FAIRIES!', b0.hash)
+# b2 = FairyBlock.new('That\'s me Mario!', b1.hash)
+# b3 = FairyBlock.new('TEST TEST TEST', b2.hash)
+#
+#
+# blockchain = FairyChain.new
+# blockchain.add_block(b0)
+# blockchain.add_block(b1)
+# blockchain.add_block(b2)
+# blockchain.add_block(b3)
+#
+#
+# if blockchain.validate_fairychain?
+#   puts "Blockchain is operational"
+# else
+#   puts "Blockchain corrupted!"
+# end
+#
+# blockchain.print_fairychain
 
