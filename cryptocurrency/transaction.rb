@@ -26,7 +26,7 @@ class TransactionPool
     @qty =  quantity
     @time = Time.now
 
-    transactions.append(
+    @transactions.append(
       {
         from: @from_sender,
         to: @to_receiver,
@@ -35,10 +35,16 @@ class TransactionPool
         hash: hash
       }
     )
+
+    pp @transactions
   end
 
   def empty_pool?
     @transactions.empty?
+  end
+
+  def full_pool?
+    @transactions.length == @max_transactions
   end
 
   def even_loop(transaction_pool)
