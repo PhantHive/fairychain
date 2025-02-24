@@ -44,7 +44,7 @@ class FairyBlock
     end
   end
 
-    def to_json(*args)
+  def to_json(*args)
     {
       data: @transactions,
       hash: @hash,

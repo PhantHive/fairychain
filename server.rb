@@ -20,12 +20,6 @@ class FairyBlockchainServer < Sinatra::Base
     content_type :json
   end
 
-  get '/fairychain' do
-    {
-      fairychain: @@blockchain.blockchain,
-      length: @@blockchain.blockchain.length
-    }.to_json
-  end
 
   post '/transaction' do
     data = JSON.parse(request.body.read)
@@ -60,6 +54,19 @@ class FairyBlockchainServer < Sinatra::Base
   # post '/mine' do
   #   mine_new_block
   # end
+
+  get '/latestblock' do
+    {
+      latestblock: @@blockchain.last_block
+    }.to_json
+  end
+
+  get '/fairychain' do
+    {
+      fairychain: @@blockchain.blockchain,
+      length: @@blockchain.blockchain.length
+    }.to_json
+  end
 
   get '/validate' do
     {
